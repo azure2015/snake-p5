@@ -1,6 +1,7 @@
+// Snake game, a basic snake game for on browser using p5 framework
+
 var snake;
 var scal = 20;
-
 var food;
 
 function setup() {
@@ -8,7 +9,6 @@ function setup() {
   createCanvas(600, 600);
   snake = new Snake();
   pickLocation();
- // food = createVector(random(width),random(height));
 }
 
 function draw() {
@@ -16,6 +16,7 @@ function draw() {
   snake.move();
   snake.show();
   snake.check();
+  frameRate(10+snake.len);
   
   fill(255,0,100);
   rect(food.x,food.y,20,20);
@@ -32,6 +33,8 @@ function pickLocation() {
   food.mult(scal);
 }
 
+
+// Which key is pressed and send direction to object
 function keyPressed() {
   if(keyCode === UP_ARROW) {
    	snake.direction(0,-1);
@@ -48,6 +51,8 @@ function keyPressed() {
   
 }
 
+
+// Snake class, separate to file in later version
 
 class Snake {
   
@@ -78,6 +83,7 @@ class Snake {
    
   
  }
+ 
   
  direction(x,y) {
    this.dx = x;
@@ -113,6 +119,8 @@ class Snake {
     	rect(this.tail[i].x,this.tail[i].y,20,20); 
    }
    rect(this.x,this.y,20,20); 
+   textSize(20);                                  // print score
+   text("Score : " + (this.len*10),20,20);
  }
   
 }
