@@ -1,14 +1,14 @@
 // Snake game, a basic snake game for on browser using p5 framework
 
-var snake;
-var scal = 20;
-var food;
+var snake;         // snake object
+var scal = 20;     // used for scale
+var food;         // simple variable change to object in future version
 
 function setup() {
-  frameRate(10);
+  frameRate(10);          // start frame rate
   createCanvas(600, 600);
-  snake = new Snake();
-  pickLocation();
+  snake = new Snake();    // create snake
+  pickLocation();         // create food
 }
 
 function draw() {
